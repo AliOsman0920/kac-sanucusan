@@ -1,1 +1,136 @@
-# kac-sanucusan
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emos Aşk Testi 💖</title>
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial, sans-serif;
+background: linear-gradient(135deg, #ff4e8b, #8a2be2);
+overflow:hidden;
+}
+
+/* Quiz ve aşk kutusu */
+#quizBox, #loveBox{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:absolute;
+top:0; left:0;
+width:100%; height:100%;
+}
+
+h1{
+font-size:50px;
+color:#fff;
+margin-bottom:30px;
+text-shadow:0 0 10px #ffdde1,0 0 20px #ff4e8b;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:20px;
+margin:10px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+}
+
+#option1{
+background: navy;
+color:white;
+position:absolute;
+}
+
+#option2{
+background: gold;
+color:black;
+position:absolute;
+}
+
+#loveBox{
+background: linear-gradient(135deg, #ff9ce1, #ff4e8b);
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+#loveBox h2{
+font-size:40px;
+color:white;
+margin-bottom:20px;
+text-shadow: 0 0 10px #fff,0 0 20px #ffdde1;
+}
+
+/* Uçuşan yıldızlar */
+.star{
+position:absolute;
+color:white;
+font-size:2px;
+animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+0%{opacity:0.1;}
+50%{opacity:0.8;}
+100%{opacity:0.1;}
+}
+</style>
+</head>
+<body>
+
+<div id="quizBox">
+<h1>Emos Ali’yi ne kadar seviyor?</h1>
+<button id="option1">Sadece Seviyor</button>
+<button id="option2">Dünyalar Kadar Çok Seviyor</button>
+</div>
+
+<div id="loveBox">
+<h2>Bende seni dünyalardan, kendimden, Fenerbahçeden, her şeyden çok seviyorum güzelim 💖</h2>
+</div>
+
+<script>
+const option1 = document.getElementById('option1');
+const option2 = document.getElementById('option2');
+const quizBox = document.getElementById('quizBox');
+const loveBox = document.getElementById('loveBox');
+
+// Option1 kaçıyor
+function moveOption1(){
+    const x = Math.random() * (window.innerWidth - option1.offsetWidth);
+    const y = Math.random() * (window.innerHeight - option1.offsetHeight);
+    option1.style.left = x + 'px';
+    option1.style.top = y + 'px';
+}
+option1.addEventListener('mouseenter', moveOption1);
+
+// Option2 tıklanınca aşk sayfası
+option2.addEventListener('click', ()=>{
+    quizBox.style.display = 'none';
+    loveBox.style.display = 'flex';
+});
+
+// Uçuşan yıldızlar
+function createStar(){
+    const star=document.createElement('div');
+    star.classList.add('star');
+    star.style.left=Math.random()*100+'vw';
+    star.style.top=Math.random()*100+'vh';
+    star.style.fontSize=Math.random()*3+1+'px';
+    document.body.appendChild(star);
+    setTimeout(()=>{star.remove();},4000);
+}
+
+setInterval(createStar,100);
+</script>
+
+</body>
+</html>
