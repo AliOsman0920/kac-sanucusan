@@ -14,7 +14,6 @@ background: linear-gradient(135deg, #ff4e8b, #8a2be2);
 overflow:hidden;
 }
 
-/* Quiz ve aşk kutusu */
 #quizBox, #loveBox{
 display:flex;
 flex-direction:column;
@@ -69,20 +68,6 @@ color:white;
 margin-bottom:20px;
 text-shadow: 0 0 10px #fff,0 0 20px #ffdde1;
 }
-
-/* Uçuşan yıldızlar */
-.star{
-position:absolute;
-color:white;
-font-size:2px;
-animation: twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-0%{opacity:0.1;}
-50%{opacity:0.8;}
-100%{opacity:0.1;}
-}
 </style>
 </head>
 <body>
@@ -98,18 +83,19 @@ animation: twinkle 2s infinite alternate;
 </div>
 
 <script>
+// Option1 kaçar
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const quizBox = document.getElementById('quizBox');
 const loveBox = document.getElementById('loveBox');
 
-// Option1 kaçıyor
 function moveOption1(){
     const x = Math.random() * (window.innerWidth - option1.offsetWidth);
     const y = Math.random() * (window.innerHeight - option1.offsetHeight);
     option1.style.left = x + 'px';
     option1.style.top = y + 'px';
 }
+
 option1.addEventListener('mouseenter', moveOption1);
 
 // Option2 tıklanınca aşk sayfası
@@ -117,19 +103,6 @@ option2.addEventListener('click', ()=>{
     quizBox.style.display = 'none';
     loveBox.style.display = 'flex';
 });
-
-// Uçuşan yıldızlar
-function createStar(){
-    const star=document.createElement('div');
-    star.classList.add('star');
-    star.style.left=Math.random()*100+'vw';
-    star.style.top=Math.random()*100+'vh';
-    star.style.fontSize=Math.random()*3+1+'px';
-    document.body.appendChild(star);
-    setTimeout(()=>{star.remove();},4000);
-}
-
-setInterval(createStar,100);
 </script>
 
 </body>
